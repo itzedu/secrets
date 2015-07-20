@@ -14,6 +14,10 @@
   <% end %>
 <% end %>
 
+<% if flash[:success] %>  
+    <%= flash[:success] %>
+<% end %>
+
 <% if current_user %>
   <form action='/sessions' method='post'>
     <input type='hidden' name="authenticity_token" value="<%= form_authenticity_token %>">

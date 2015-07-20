@@ -1,5 +1,5 @@
 Rails.application.routes.draw do
-  root "users#index"
+  root "users#new"
   resources :users
   resource :sessions, :only => [:new, :create, :destroy]
   # The priority is based upon order of creation: first created -> highest priority.
