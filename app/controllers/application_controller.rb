@@ -8,4 +8,8 @@ class ApplicationController < ActionController::Base
   end
 
   helper_method :current_user
+
+  def require_login
+    redirect_to new_sessions_path if session[:user_id] == nil
+  end
 end
