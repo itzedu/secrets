@@ -8,6 +8,14 @@
 </head>
 <body>
 
+<% if current_user %>
+  <form action='/sessions' method='post'>
+    <input type='hidden' name="authenticity_token" value="<%= form_authenticity_token %>">
+    <input type='hidden' name='_method' value='delete'>
+    <button type="submit">Log Out</button>
+  </form>
+<% end %>
+
 <% if flash[:errors] %>
   <% flash[:errors].each do |error| %>
     <p><%= error %></p>
@@ -16,14 +24,6 @@
 
 <% if flash[:success] %>  
     <%= flash[:success] %>
-<% end %>
-
-<% if current_user %>
-  <form action='/sessions' method='post'>
-    <input type='hidden' name="authenticity_token" value="<%= form_authenticity_token %>">
-    <input type='hidden' name='_method' value='delete'>
-    <button type="submit">Log Out</button>
-  </form>
 <% end %>
 
 <%= yield %>

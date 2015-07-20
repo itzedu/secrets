@@ -2,3 +2,26 @@
 <p>
   <a href="/users/<%= @user.id %>/edit">Edit Profile</a>
 </p>
+<div>
+  <form action="/secrets" method="post">
+    <input name="authenticity_token" value="<%= form_authenticity_token %>" type="hidden">
+
+    <p>
+      <label for="new_secret">New Secret</label>
+      <textarea id="new_secret" name="secret[content]"></textarea>
+    </p>
+    <input type="submit" value="Create Secret"> 
+  </form>
+</div>
+<div>
+  <h3>Secrets</h3>
+  <% @secrets.each do |secret| %>
+    <p><%= secret.content %></p>
+    <form action="/secrets/<%= secret.id %>" method="post">
+      <input name="authenticity_token" value="<%= form_authenticity_token %>" type="hidden">
+      <input name="_method" value="delete" type="hidden">
+      <input type="submit" value="Delete"> 
+    </form>
+  <hr>
+  <% end %>
+</div>
