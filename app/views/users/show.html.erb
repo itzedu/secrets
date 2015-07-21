@@ -25,3 +25,10 @@
   <hr>
   <% end %>
 </div>
+<div>
+  <h3>Secrets Liked</h3>
+  <% @secrets_liked.each do |secret| %>
+    <p><%= secret.content %></p> 
+    <p><%= secret.likes.count %> likes</p>
+  <% end %>
+</div>

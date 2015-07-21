@@ -1,5 +1,6 @@
 class UsersController < ApplicationController
   before_action :require_login, except: [:new, :create]
+  before_action :require_correct_user, only: [:show, :edit, :update, :destroy]
 
   def new
   end
@@ -7,6 +8,7 @@ class UsersController < ApplicationController
   def show
     @user = User.find(params[:id])
     @secrets = @user.secrets
+    @secrets_liked = @user.secrets_liked.group(:id).order(:id)
   end
 
   def create
