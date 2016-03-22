@@ -6,5 +6,4 @@ class Secret < ActiveRecord::Base
   def find_like_id current_user
     Like.select(:id).where(user: current_user, secret: self)[0].id
   end
-
 end
