@@ -16,7 +16,7 @@ class ApplicationController < ActionController::Base
   def require_correct_user
     if params[:user_id]
       user = User.find(params[:user_id])
-    else  
+    else
       user = User.find(params[:id])
     end
     redirect_to current_user if current_user != user

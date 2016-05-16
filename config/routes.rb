@@ -1,5 +1,5 @@
 Rails.application.routes.draw do
-  root "users#new"
+  # root "users#new"
   resources :users, :except => [:index]
   resources :secrets, :except => [:show, :edit, :update]
   resources :likes, :only => [:create, :destroy]
